@@ -34,19 +34,11 @@
 - (void)audioCheck;
 - (void)audioCheckTimeout;
 
-/*
-- (void)sendStartReport;
-- (void)sendPingReport;
-- (void)sendAdsReport:(NSArray *) ads;
-- (void)sendAdClickedReport:(int) adId;
-- (void)deallocReporting;
-*/
 
 /*====================================
 // MARK: PUBLIC PROPERTIES
 //===================================*/
 
-// TODO: finish commenting for SDK
 
 @property (readonly) BOOL isAudioPlaying;
 @property(readwrite) BOOL demoModeEnabled;
@@ -54,7 +46,6 @@
 @property(readonly) BOOL isExpressDevice;
 @property(readwrite) float volume;
 
-// comment or remove for SDK, dont expose buffer
 @property(readonly) float* floatBuffer;
 @property(readonly) UInt32 floatBufferSize;
 
@@ -63,7 +54,6 @@
  */
 @property(readwrite) NSUInteger currentChannel;
 
-// TODO: refactor out Apb reference
 
 /**
  The apb that is currently being accessed or nil

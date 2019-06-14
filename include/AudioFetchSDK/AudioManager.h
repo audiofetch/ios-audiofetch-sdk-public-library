@@ -148,7 +148,7 @@ typedef void(^ResetDiscoveryCompletionHandler)(BOOL restarted);
 @property(readonly) Apb* _Nullable currentApb;
 
 /**
- The list of discovered Apbs or nil
+ The list of discovered Apbs or empty array
  */
 @property(readonly) NSArray<Apb*>* _Nonnull allApbs;
 

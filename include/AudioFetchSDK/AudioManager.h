@@ -11,6 +11,8 @@
 
 @interface AudioManager : NSObject <AVAudioPlayerDelegate>
 
+typedef void(^ResetDiscoveryCompletionHandler)(BOOL restarted);
+
 /*====================================
 // MARK: SINGLETON
 //===================================*/
@@ -21,11 +23,22 @@
 
  @return AudioManager
  */
-+ (instancetype) sharedInstance;
+@property (class, readonly) AudioManager* _Nonnull shared;
 
 /*====================================
 // MARK: PUBLIC METHODS
 //===================================*/
+
+/**
+ Stops the audio, and resets and restarts discovery.
+ 
+ @param startAudio - If NO, then only discovery is run, and discovery results are returned, but audio will not automatically start.
+ If YES, then audio stops, and is reset, discovery is run and audio will be restarted automatically.
+ 
+ @param handler - Completion handler receives YES if restarted, NO otherwise
+ */
+- (void)resetDiscovery:(BOOL) startAudio
+        withCompletion: (ResetDiscoveryCompletionHandler _Nonnull) handler;
 
 /**
  Start the audio
@@ -99,6 +112,12 @@
 @property (readonly) BOOL isAudioPlaying;
 
 /**
+ Indicates either discovery and/or audio service is started.
+ This differs from isAudioPlaying, which monitors actual stream timeouts, this just tells us that the service is started.
+ */
+@property (readonly) BOOL isAudioServiceStarted;
+
+/**
  Whether demo mode is enabled, or not
  */
 @property(readwrite) BOOL demoModeEnabled;
@@ -126,12 +145,12 @@
 /**
  The apb that is currently being accessed or nil
  */
-@property(readonly) Apb *currentApb;
+@property(readonly) Apb* _Nullable currentApb;
 
 /**
  The list of discovered Apbs or nil
  */
-@property(readonly) NSArray *allApbs;
+@property(readonly) NSArray<Apb*>* _Nonnull allApbs;
 
 /**
  Should be 75 for TV audio, 150 for music

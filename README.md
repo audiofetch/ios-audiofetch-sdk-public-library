@@ -4,7 +4,7 @@
 # Overview
 The AudioFetch SDK allows developers to add the AudioFetch system channel discovery and audio management features directly to their third- party native iOS applications.
 
-The SDK is delivered as a Universal Framework that includes both mobile and x86 simulator builds so that both may be used. The simulator is a fully functional development environment for Audiofetch and can help speed custom app development.
+The SDK is delivered as a XCFramework that includes both mobile and x86 simulator builds so that both may be used. The simulator is a fully functional development environment for Audiofetch and can help speed custom app development. Additionally the XCFramework can be used on Apple M1 silicon macs to run in the simulator for development.
 
 ## To Integrate with your native iOS App
 ### Add the SDK package to your project
@@ -16,17 +16,17 @@ The SDK sample application is an excellent guide on how to integrate and use the
 - Install AFNetworking from CocoaPods
 - Create a Swift bridging header if needed
 
-The framework can be integrated identically to the sample app:
+The framework can be integrated identically to the sample app by dragging the XCFramework into your project.
 
-![Xcode Integration](docs/xcodeIntegration.png)
+![image-20211001110807336](/Users/morgan/shared/mojolabs/projects/audiofetch/audiofetch_dev/af_mobile/ios-audiofetch-sdk-public-library/images/README/image-20211001110807336.png)
 
 Two items need to be added to the linker flags:
 
-![Linker Flags](docs/linkerFlags.png)
+![Linker Flags](images/README/linkerFlags.png)
 
 In Build Phases, add MediaPlayer.framework and libresolv. 
 
-![Build Phases](docs/linkWithBinary.png)
+![Build Phases](images/README/linkWithBinary.png)
 
 Also Add AFNetworking by adding the library manually or by using CocoaPods. Here’s a link describing how to add using [CocoaPods](https://cocoapods.org/pods/AFNetworking).
 
@@ -46,6 +46,12 @@ Finally, for a Swift Project, create a Bridging Header:
 #import "Channel.h"
 #import "Notifications.h"
 ````
+
+With new Apple M1 silicon macs, we now need to exclude arm64 for the simulator. In build settings, add arm64 to excluded architectures for simulator builds:
+
+![image-20211001110117344](/Users/morgan/shared/mojolabs/projects/audiofetch/audiofetch_dev/af_mobile/ios-audiofetch-sdk-public-library/images/README/image-20211001110117344.png)
+
+### 
 
 ### Integrate Audio Manager With Your App and ViewController
 

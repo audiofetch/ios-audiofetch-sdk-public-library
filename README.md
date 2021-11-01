@@ -1,7 +1,10 @@
 
 ## AudioFetch iOS SDK Public Library 
 
+##### Note: v2.2.0 RC1 is undergoing internal testing, bugfix changes may occur before final release.
+
 # Overview
+
 The AudioFetch SDK allows developers to add the AudioFetch system channel discovery and audio management features directly to their third- party native iOS applications.
 
 The SDK is delivered as a XCFramework that includes both mobile and x86 simulator builds so that both may be used. The simulator is a fully functional development environment for Audiofetch and can help speed custom app development. Additionally the XCFramework can be used on Apple M1 silicon macs to run in the simulator for development.
